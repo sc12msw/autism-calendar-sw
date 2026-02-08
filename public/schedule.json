@@ -1,131 +1,5 @@
 [
   {
-    "title": "Morning Routine (Wake, Dress, Breakfast)",
-    "startHour": 7,
-    "startMinute": 30,
-    "endHour": 8,
-    "endMinute": 0,
-    "energy": -2,
-    "repeat-weekday": true
-  },
-  {
-    "title": "Focused Work Block 1",
-    "startHour": 9,
-    "startMinute": 0,
-    "endHour": 10,
-    "endMinute": 30,
-    "energy": -3,
-    "repeat-weekday": true
-  },
-  {
-    "title": "Short Break / Sensory Reset",
-    "startHour": 10,
-    "startMinute": 30,
-    "endHour": 11,
-    "endMinute": 0,
-    "energy": 2,
-    "repeat-weekday": true
-  },
-  {
-    "title": "Focused Work Block 2",
-    "startHour": 11,
-    "startMinute": 0,
-    "endHour": 12,
-    "endMinute": 30,
-    "energy": -3,
-    "repeat-weekday": true
-  },
-  {
-    "title": "Lunch Break (Quiet)",
-    "startHour": 12,
-    "startMinute": 30,
-    "endHour": 13,
-    "endMinute": 30,
-    "energy": 1,
-    "repeat-weekday": true
-  },
-  {
-    "title": "Meetings / Collaborative Work",
-    "startHour": 13,
-    "startMinute": 30,
-    "endHour": 15,
-    "endMinute": 0,
-    "energy": -4,
-    "repeat-weekday": true
-  },
-  {
-    "title": "Snack & Hydrate",
-    "startHour": 15,
-    "startMinute": 0,
-    "endHour": 15,
-    "endMinute": 30,
-    "energy": 1,
-    "repeat-weekday": true
-  },
-  {
-    "title": "Wrap-up tasks",
-    "startHour": 15,
-    "startMinute": 30,
-    "endHour": 17,
-    "endMinute": 0,
-    "energy": -2,
-    "repeat-weekday": true
-  },
-  {
-    "title": "Decompression Time (Music, Low light)",
-    "startHour": 18,
-    "startMinute": 0,
-    "endHour": 19,
-    "endMinute": 0,
-    "energy": 3,
-    "repeat-weekday": true
-  },
-  {
-    "title": "Relaxed Morning (Wake, Breakfast)",
-    "startHour": 8,
-    "startMinute": 0,
-    "endHour": 9,
-    "endMinute": 30,
-    "energy": 0,
-    "repeat-weekend": true
-  },
-  {
-    "title": "Household Chores / Errands",
-    "startHour": 9,
-    "startMinute": 30,
-    "endHour": 12,
-    "endMinute": 0,
-    "energy": -4,
-    "repeat-weekend": true
-  },
-  {
-    "title": "Lunch",
-    "startHour": 12,
-    "startMinute": 0,
-    "endHour": 13,
-    "endMinute": 0,
-    "energy": 1,
-    "repeat-weekend": true
-  },
-  {
-    "title": "Free Time / Personal Projects",
-    "startHour": 13,
-    "startMinute": 0,
-    "endHour": 18,
-    "endMinute": 0,
-    "energy": 3,
-    "repeat-weekend": true
-  },
-  {
-    "title": "Evening Relaxation",
-    "startHour": 20,
-    "startMinute": 0,
-    "endHour": 21,
-    "endMinute": 0,
-    "energy": 2,
-    "repeat-weekend": true
-  },
-  {
     "title": "Brush Teeth",
     "startHour": 7,
     "startMinute": 0,
@@ -141,6 +15,33 @@
     "endHour": 7,
     "endMinute": 30,
     "energy": 0,
+    "day": 0
+  },
+  {
+    "title": "Relaxed Morning (Wake, Breakfast)",
+    "startHour": 8,
+    "startMinute": 0,
+    "endHour": 9,
+    "endMinute": 30,
+    "energy": 0,
+    "day": 0
+  },
+  {
+    "title": "Household Chores / Errands",
+    "startHour": 9,
+    "startMinute": 30,
+    "endHour": 12,
+    "endMinute": 0,
+    "energy": -4,
+    "day": 0
+  },
+  {
+    "title": "Lunch",
+    "startHour": 12,
+    "startMinute": 0,
+    "endHour": 13,
+    "endMinute": 0,
+    "energy": 1,
     "day": 0
   },
   {
@@ -180,6 +81,15 @@
     "day": 0
   },
   {
+    "title": "Evening Relaxation",
+    "startHour": 20,
+    "startMinute": 0,
+    "endHour": 21,
+    "endMinute": 0,
+    "energy": 2,
+    "day": 0
+  },
+  {
     "title": "Wind-down (Reading as a couple)",
     "startHour": 21,
     "startMinute": 0,
@@ -204,6 +114,87 @@
     "endHour": 7,
     "endMinute": 30,
     "energy": 0,
+    "day": 1
+  },
+  {
+    "title": "Morning Routine (Wake, Dress, Breakfast)",
+    "startHour": 7,
+    "startMinute": 30,
+    "endHour": 8,
+    "endMinute": 0,
+    "energy": -2,
+    "day": 1
+  },
+  {
+    "title": "Focused Work Block 1",
+    "startHour": 9,
+    "startMinute": 0,
+    "endHour": 10,
+    "endMinute": 30,
+    "energy": -3,
+    "day": 1
+  },
+  {
+    "title": "Short Break / Sensory Reset",
+    "startHour": 10,
+    "startMinute": 30,
+    "endHour": 11,
+    "endMinute": 0,
+    "energy": 2,
+    "day": 1
+  },
+  {
+    "title": "Focused Work Block 2",
+    "startHour": 11,
+    "startMinute": 0,
+    "endHour": 12,
+    "endMinute": 30,
+    "energy": -3,
+    "day": 1
+  },
+  {
+    "title": "Lunch Break (Quiet)",
+    "startHour": 12,
+    "startMinute": 30,
+    "endHour": 13,
+    "endMinute": 30,
+    "energy": 1,
+    "day": 1
+  },
+  {
+    "title": "Meetings / Collaborative Work",
+    "startHour": 13,
+    "startMinute": 30,
+    "endHour": 15,
+    "endMinute": 0,
+    "energy": -4,
+    "day": 1
+  },
+  {
+    "title": "Snack & Hydrate",
+    "startHour": 15,
+    "startMinute": 0,
+    "endHour": 15,
+    "endMinute": 30,
+    "energy": 1,
+    "day": 1
+  },
+  {
+    "title": "Wrap-up tasks",
+    "startHour": 15,
+    "startMinute": 30,
+    "endHour": 17,
+    "endMinute": 0,
+    "energy": -2,
+    "day": 1
+  },
+  {
+    "title": "Decompression Time (Music, Low light)",
+    "startHour": 18,
+    "startMinute": 0,
+    "endHour": 19,
+    "endMinute": 0,
+    "energy": 3,
     "day": 1
   },
   {
@@ -240,6 +231,87 @@
     "endHour": 7,
     "endMinute": 30,
     "energy": 0,
+    "day": 2
+  },
+  {
+    "title": "Morning Routine (Wake, Dress, Breakfast)",
+    "startHour": 7,
+    "startMinute": 30,
+    "endHour": 8,
+    "endMinute": 0,
+    "energy": -2,
+    "day": 2
+  },
+  {
+    "title": "Focused Work Block 1",
+    "startHour": 9,
+    "startMinute": 0,
+    "endHour": 10,
+    "endMinute": 30,
+    "energy": -3,
+    "day": 2
+  },
+  {
+    "title": "Short Break / Sensory Reset",
+    "startHour": 10,
+    "startMinute": 30,
+    "endHour": 11,
+    "endMinute": 0,
+    "energy": 2,
+    "day": 2
+  },
+  {
+    "title": "Focused Work Block 2",
+    "startHour": 11,
+    "startMinute": 0,
+    "endHour": 12,
+    "endMinute": 30,
+    "energy": -3,
+    "day": 2
+  },
+  {
+    "title": "Lunch Break (Quiet)",
+    "startHour": 12,
+    "startMinute": 30,
+    "endHour": 13,
+    "endMinute": 30,
+    "energy": 1,
+    "day": 2
+  },
+  {
+    "title": "Meetings / Collaborative Work",
+    "startHour": 13,
+    "startMinute": 30,
+    "endHour": 15,
+    "endMinute": 0,
+    "energy": -4,
+    "day": 2
+  },
+  {
+    "title": "Snack & Hydrate",
+    "startHour": 15,
+    "startMinute": 0,
+    "endHour": 15,
+    "endMinute": 30,
+    "energy": 1,
+    "day": 2
+  },
+  {
+    "title": "Wrap-up tasks",
+    "startHour": 15,
+    "startMinute": 30,
+    "endHour": 17,
+    "endMinute": 0,
+    "energy": -2,
+    "day": 2
+  },
+  {
+    "title": "Decompression Time (Music, Low light)",
+    "startHour": 18,
+    "startMinute": 0,
+    "endHour": 19,
+    "endMinute": 0,
+    "energy": 3,
     "day": 2
   },
   {
@@ -276,6 +348,15 @@
     "endHour": 7,
     "endMinute": 30,
     "energy": 0,
+    "day": 3
+  },
+  {
+    "title": "Morning Routine (Wake, Dress, Breakfast)",
+    "startHour": 7,
+    "startMinute": 30,
+    "endHour": 8,
+    "endMinute": 0,
+    "energy": -2,
     "day": 3
   },
   {
@@ -315,24 +396,6 @@
     "day": 3
   },
   {
-    "title": "Dinner",
-    "startHour": 19,
-    "startMinute": 0,
-    "endHour": 20,
-    "endMinute": 0,
-    "energy": 0,
-    "day": 3
-  },
-  {
-    "title": "Wind-down (Reading as a couple)",
-    "startHour": 21,
-    "startMinute": 0,
-    "endHour": 22,
-    "endMinute": 0,
-    "energy": 2,
-    "day": 3
-  },
-  {
     "title": "Brush Teeth",
     "startHour": 7,
     "startMinute": 0,
@@ -348,6 +411,15 @@
     "endHour": 7,
     "endMinute": 30,
     "energy": 0,
+    "day": 4
+  },
+  {
+    "title": "Morning Routine (Wake, Dress, Breakfast)",
+    "startHour": 7,
+    "startMinute": 30,
+    "endHour": 8,
+    "endMinute": 0,
+    "energy": -2,
     "day": 4
   },
   {
@@ -387,24 +459,6 @@
     "day": 4
   },
   {
-    "title": "Dinner",
-    "startHour": 19,
-    "startMinute": 0,
-    "endHour": 20,
-    "endMinute": 0,
-    "energy": 0,
-    "day": 4
-  },
-  {
-    "title": "Wind-down (Reading as a couple)",
-    "startHour": 21,
-    "startMinute": 0,
-    "endHour": 22,
-    "endMinute": 0,
-    "energy": 2,
-    "day": 4
-  },
-  {
     "title": "Brush Teeth",
     "startHour": 7,
     "startMinute": 0,
@@ -420,6 +474,42 @@
     "endHour": 7,
     "endMinute": 30,
     "energy": 0,
+    "day": 5
+  },
+  {
+    "title": "Morning Routine (Wake, Dress, Breakfast)",
+    "startHour": 7,
+    "startMinute": 30,
+    "endHour": 8,
+    "endMinute": 0,
+    "energy": -2,
+    "day": 5
+  },
+  {
+    "title": "Focused Work Block 1",
+    "startHour": 9,
+    "startMinute": 0,
+    "endHour": 10,
+    "endMinute": 30,
+    "energy": -3,
+    "day": 5
+  },
+  {
+    "title": "Short Break / Sensory Reset",
+    "startHour": 10,
+    "startMinute": 30,
+    "endHour": 11,
+    "endMinute": 0,
+    "energy": 2,
+    "day": 5
+  },
+  {
+    "title": "Focused Work Block 2",
+    "startHour": 11,
+    "startMinute": 0,
+    "endHour": 12,
+    "endMinute": 30,
+    "energy": -3,
     "day": 5
   },
   {
@@ -441,30 +531,12 @@
     "day": 5
   },
   {
-    "title": "Dinner",
-    "startHour": 19,
-    "startMinute": 0,
-    "endHour": 20,
-    "endMinute": 0,
-    "energy": 0,
-    "day": 5
-  },
-  {
     "title": "Socializing with friends (optional)",
     "startHour": 19,
     "startMinute": 0,
     "endHour": 22,
     "endMinute": 0,
     "energy": -4,
-    "day": 5
-  },
-  {
-    "title": "Wind-down (Reading as a couple)",
-    "startHour": 21,
-    "startMinute": 0,
-    "endHour": 22,
-    "endMinute": 0,
-    "energy": 2,
     "day": 5
   },
   {
@@ -486,12 +558,57 @@
     "day": 6
   },
   {
+    "title": "Relaxed Morning (Wake, Breakfast)",
+    "startHour": 8,
+    "startMinute": 0,
+    "endHour": 9,
+    "endMinute": 30,
+    "energy": 0,
+    "day": 6
+  },
+  {
+    "title": "Household Chores / Errands",
+    "startHour": 9,
+    "startMinute": 30,
+    "endHour": 12,
+    "endMinute": 0,
+    "energy": -4,
+    "day": 6
+  },
+  {
+    "title": "Lunch",
+    "startHour": 12,
+    "startMinute": 0,
+    "endHour": 13,
+    "endMinute": 0,
+    "energy": 1,
+    "day": 6
+  },
+  {
+    "title": "Free Time / Personal Projects",
+    "startHour": 13,
+    "startMinute": 0,
+    "endHour": 18,
+    "endMinute": 0,
+    "energy": 3,
+    "day": 6
+  },
+  {
     "title": "Dinner",
     "startHour": 19,
     "startMinute": 0,
     "endHour": 20,
     "endMinute": 0,
     "energy": 0,
+    "day": 6
+  },
+  {
+    "title": "Evening Relaxation",
+    "startHour": 20,
+    "startMinute": 0,
+    "endHour": 21,
+    "endMinute": 0,
+    "energy": 2,
     "day": 6
   },
   {

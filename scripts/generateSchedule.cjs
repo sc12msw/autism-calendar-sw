@@ -3,7 +3,7 @@ const path = require('path');
 
 // --- Configuration ---
 const OUTPUT_FILE = path.join(__dirname, '../public/schedule.json');
-const TARGET_DAILY_ENERGY = 12; // New constant for the target energy
+const TARGET_DAILY_ENERGY = 12;
 
 // --- Day Constants (0 = Sunday, 1 = Monday, ..., 6 = Saturday) ---
 const SUNDAY = 0;
@@ -16,6 +16,7 @@ const SATURDAY = 6;
 const ALL_DAYS_INDICES = [SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY];
 const WEEKDAY_INDICES = [MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY];
 const WEEKEND_INDICES = [SUNDAY, SATURDAY];
+const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 
 // --- Helper to create a base event object ---
@@ -30,7 +31,7 @@ function createEventBase(title, startHour, startMinute, endHour, endMinute, ener
 // - day: The specific day index (0-6) for non-repeating events
 
 const scheduleDefinitions = [
-    // --- Daily Recurring Events (will be expanded to all 7 days by the script) ---
+    // --- Daily Recurring Events ---
     {
         event: createEventBase("Brush Teeth", 7, 0, 7, 10, 0),
         repeatType: 'daily'
@@ -44,12 +45,11 @@ const scheduleDefinitions = [
         repeatType: 'daily'
     },
     {
-        event: createEventBase("Dinner", 19, 0, 20, 0, 0), // Default dinner time
+        event: createEventBase("Dinner", 19, 0, 20, 0, 0),
         repeatType: 'daily'
     },
 
-    // --- Weekday Schedule (These will have the 'repeat-weekday' flag) ---
-    // Note: If you want to override a daily event for a weekday, define it as a specific 'day' event.
+    // --- Weekday Schedule ---
     {
         event: createEventBase("Morning Routine (Wake, Dress, Breakfast)", 7, 30, 8, 0, -2),
         repeatType: 'weekday'
@@ -87,8 +87,7 @@ const scheduleDefinitions = [
         repeatType: 'weekday'
     },
     
-    // --- Weekend Schedule (These will have the 'repeat-weekend' flag) ---
-    // Note: If you want to override a daily event for a weekend day, define it as a specific 'day' event.
+    // --- Weekend Schedule ---
     {
         event: createEventBase("Relaxed Morning (Wake, Breakfast)", 8, 0, 9, 30, 0),
         repeatType: 'weekend'
@@ -102,218 +101,171 @@ const scheduleDefinitions = [
         repeatType: 'weekend'
     },
     {
-        event: createEventBase("Free Time / Personal Projects", 13, 0, 18, 0, 3),
-        repeatType: 'weekend'
-    },
-    {
         event: createEventBase("Evening Relaxation", 20, 0, 21, 0, 2),
         repeatType: 'weekend'
     },
 
     // --- Specific Day Overrides/Additions ---
-    // These events will override any 'daily' or 'weekday/weekend' expanded events that fall into
-    // the same exact day and time slot.
+    // These events will override any 'daily' or 'weekday/weekend' expanded events.
 
-    // Example: Wednesday Appointments
-    {
-        event: createEventBase("Appointments / Errands", 9, 0, 11, 0, -3),
-        day: WEDNESDAY
-    },
-    {
-        event: createEventBase("Rest & Recover", 11, 0, 12, 0, 2),
-        day: WEDNESDAY
-    },
-    {
-        event: createEventBase("Deep Work", 13, 0, 17, 0, -4),
-        day: WEDNESDAY
-    },
-    {
-        event: createEventBase("Evening Free Time", 17, 0, 22, 0, 3),
-        day: WEDNESDAY
-    },
+    // Wednesday
+    { event: createEventBase("Appointments / Errands", 9, 0, 11, 0, -3), day: WEDNESDAY },
+    { event: createEventBase("Rest & Recover", 11, 0, 12, 0, 2), day: WEDNESDAY },
+    { event: createEventBase("Deep Work", 13, 0, 17, 0, -4), day: WEDNESDAY },
+    { event: createEventBase("Evening Free Time", 17, 0, 22, 0, 3), day: WEDNESDAY },
 
-    // Example: Thursday Social Outing
-    {
-        event: createEventBase("Social Outing / Event", 8, 0, 12, 0, -5),
-        day: THURSDAY
-    },
-    {
-        event: createEventBase("Recovery / Quiet Time", 13, 0, 16, 0, 4),
-        day: THURSDAY
-    },
-    {
-        event: createEventBase("Hobby / Special Interest", 16, 0, 18, 0, 3),
-        day: THURSDAY
-    },
-    {
-        event: createEventBase("Evening Relaxation", 18, 0, 22, 0, 2),
-        day: THURSDAY
-    },
+    // Thursday
+    { event: createEventBase("Social Outing / Event", 8, 0, 12, 0, -5), day: THURSDAY },
+    { event: createEventBase("Recovery / Quiet Time", 13, 0, 16, 0, 4), day: THURSDAY },
+    { event: createEventBase("Hobby / Special Interest", 16, 0, 18, 0, 3), day: THURSDAY },
+    { event: createEventBase("Evening Relaxation", 18, 0, 22, 0, 2), day: THURSDAY },
 
-    // Example: Friday Socializing
-    {
-        event: createEventBase("Work", 13, 0, 17, 0, -3),
-        day: FRIDAY
-    },
-    {
-        event: createEventBase("Decompression", 17, 0, 19, 0, 3),
-        day: FRIDAY
-    },
-    {
-        event: createEventBase("Socializing with friends (optional)", 19, 0, 22, 0, -4),
-        day: FRIDAY
-    },
+    // Friday
+    { event: createEventBase("Work", 13, 0, 17, 0, -3), day: FRIDAY },
+    { event: createEventBase("Decompression", 17, 0, 19, 0, 3), day: FRIDAY },
+    { event: createEventBase("Socializing with friends (optional)", 19, 0, 22, 0, -4), day: FRIDAY },
     
-    // Example: Sunday specific events (e.g., preparing for the week)
-    {
-        event: createEventBase("Prepare for the week ahead", 13, 0, 15, 0, -2),
-        day: SUNDAY
-    },
-    {
-        event: createEventBase("Quiet Hobby", 15, 0, 18, 0, 3),
-        day: SUNDAY
-    },
-    {
-        event: createEventBase("Sunday Dinner (Special)", 18, 0, 19, 0, 0), // This will override the daily dinner for Sunday
-        day: SUNDAY
-    },
+    // Sunday
+    { event: createEventBase("Prepare for the week ahead", 13, 0, 15, 0, -2), day: SUNDAY },
+    { event: createEventBase("Quiet Hobby", 15, 0, 18, 0, 3), day: SUNDAY },
+    { event: createEventBase("Sunday Dinner (Special)", 18, 0, 19, 0, 0), day: SUNDAY },
+
+    // Saturday
+    { event: createEventBase("Free Time / Personal Projects", 13, 0, 18, 0, 3), day: SATURDAY },
 ];
 
 // --- Schedule Generation Logic ---
 function buildSchedule(definitions) {
-    const concreteEvents = new Map(); // Key: `${day}_${startHour}_${startMinute}_${endHour}_${endMinute}`
-    const repeatingFlagEvents = []; // Events with repeat-weekday or repeat-weekend flags
+    const dailySchedule = ALL_DAYS_INDICES.map(() => []);
 
-    // Pass 1: Process Daily Events (lowest precedence, expanded to specific days)
+    const toMinutes = (hour, minute) => hour * 60 + minute;
+
+    // A helper to add an event to a day's schedule, checking for overlaps
+    const addEventToDay = (event, dayIndex) => {
+        const eventStart = toMinutes(event.startHour, event.startMinute);
+        const eventEnd = toMinutes(event.endHour, event.endMinute);
+
+        // Remove any existing event that this new event overlaps
+        dailySchedule[dayIndex] = dailySchedule[dayIndex].filter(existingEvent => {
+            const existingStart = toMinutes(existingEvent.startHour, existingEvent.startMinute);
+            const existingEnd = toMinutes(existingEvent.endHour, existingEvent.endMinute);
+            // If the existing event starts during the new event, or ends during it, it's an overlap.
+            const startsDuring = existingStart >= eventStart && existingStart < eventEnd;
+            const endsDuring = existingEnd > eventStart && existingEnd <= eventEnd;
+            const spansOver = existingStart < eventStart && existingEnd > eventEnd;
+            return !(startsDuring || endsDuring || spansOver);
+        });
+
+        dailySchedule[dayIndex].push(event);
+    };
+
+    // Pass 1: Process Weekday/Weekend events (lowest precedence)
+    definitions.filter(def => def.repeatType === 'weekday').forEach(def => {
+        WEEKDAY_INDICES.forEach(dayIndex => addEventToDay(def.event, dayIndex));
+    });
+    definitions.filter(def => def.repeatType === 'weekend').forEach(def => {
+        WEEKEND_INDICES.forEach(dayIndex => addEventToDay(def.event, dayIndex));
+    });
+
+    // Pass 2: Process Daily events (medium precedence)
     definitions.filter(def => def.repeatType === 'daily').forEach(def => {
-        ALL_DAYS_INDICES.forEach(dayIndex => {
-            const event = { ...def.event, day: dayIndex };
-            const key = `${dayIndex}_${event.startHour}_${event.startMinute}_${event.endHour}_${event.endMinute}`;
-            concreteEvents.set(key, event);
+        ALL_DAYS_INDICES.forEach(dayIndex => addEventToDay(def.event, dayIndex));
+    });
+
+    // Pass 3: Process Specific Day events (highest precedence)
+    definitions.filter(def => def.day !== undefined).forEach(def => {
+        addEventToDay(def.event, def.day);
+    });
+
+    // Flatten the array and add day property to each event
+    const finalSchedule = [];
+    dailySchedule.forEach((events, dayIndex) => {
+        events.forEach(event => {
+            finalSchedule.push({ ...event, day: dayIndex });
         });
     });
 
-    // Pass 2: Process Weekday/Weekend Events (add to repeatingFlagEvents list)
-    definitions.filter(def => def.repeatType === 'weekday').forEach(def => {
-        repeatingFlagEvents.push({ ...def.event, 'repeat-weekday': true });
-    });
-
-    definitions.filter(def => def.repeatType === 'weekend').forEach(def => {
-        repeatingFlagEvents.push({ ...def.event, 'repeat-weekend': true });
-    });
-
-    // Pass 3: Process Specific Day Events (highest precedence, override concreteEvents)
-    definitions.filter(def => def.day !== undefined && def.repeatType === undefined).forEach(def => {
-        const event = { ...def.event, day: def.day };
-        const key = `${event.day}_${event.startHour}_${event.startMinute}_${event.endHour}_${event.endMinute}`;
-        concreteEvents.set(key, event); // This will overwrite any daily event at the same slot
-    });
-
-    // Combine all events: concrete day-specific events + repeating flagged events
-    let finalScheduleList = [...Array.from(concreteEvents.values()), ...repeatingFlagEvents];
-
-    // Sort events by day, then by start time, ensuring repeating flags are sorted consistently
-    finalScheduleList.sort((a, b) => {
-        // Assign a numeric value for sorting. Specific days take precedence.
-        // repeat-weekday (-2) < repeat-weekend (-1) < specific day (0-6)
-        // A placeholder of 99 is used for events without day or repeat flags (shouldn't happen with current definitions)
-        let dayA = a.day !== undefined ? a.day : (a['repeat-weekday'] ? -2 : (a['repeat-weekend'] ? -1 : 99));
-        let dayB = b.day !== undefined ? b.day : (b['repeat-weekday'] ? -2 : (b['repeat-weekend'] ? -1 : 99));
-        
-        if (dayA !== dayB) {
-            return dayA - dayB;
-        }
-
-        // If days are the same (or both repeating flags of the same type), sort by time
-        if (a.startHour !== b.startHour) {
-            return a.startHour - b.startHour;
-        }
+    // Sort the final flat list
+    finalSchedule.sort((a, b) => {
+        if (a.day !== b.day) return a.day - b.day;
+        if (a.startHour !== b.startHour) return a.startHour - b.startHour;
         return a.startMinute - b.startMinute;
     });
 
-    return finalScheduleList;
+    return finalSchedule;
 }
 
-// --- Energy Validation Logic ---
-function validateDailyEnergy(schedule, targetEnergy) {
-    const dailyEnergyTotals = Array(7).fill(0); // For SUNDAY to SATURDAY
-    const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    const validationIssues = [];
 
-    // First, process all concrete events (those with a 'day' property)
-    schedule.filter(event => event.day !== undefined).forEach(event => {
+// --- Validation Logic ---
+function validateSchedule(schedule, targetEnergy) {
+    const dailyEnergyTotals = Array(7).fill(0);
+    const overlapIssues = [];
+
+    // --- Time Overlap Detection ---
+    for (let dayIndex = 0; dayIndex < 7; dayIndex++) {
+        const eventsForDay = schedule.filter(e => e.day === dayIndex)
+                                     .sort((a, b) => a.startHour * 60 + a.startMinute - (b.startHour * 60 + b.startMinute));
+
+        for (let i = 0; i < eventsForDay.length - 1; i++) {
+            const currentEvent = eventsForDay[i];
+            const nextEvent = eventsForDay[i + 1];
+            const currentEventEndTime = currentEvent.endHour * 60 + currentEvent.endMinute;
+            const nextEventStartTime = nextEvent.startHour * 60 + nextEvent.startMinute;
+
+            if (currentEventEndTime > nextEventStartTime) {
+                overlapIssues.push(
+                    `${dayNames[dayIndex]}: Overlap between "${currentEvent.title}" (ends ${currentEvent.endHour}:${String(currentEvent.endMinute).padStart(2, '0')}) ` +
+                    `and "${nextEvent.title}" (starts ${nextEvent.startHour}:${String(nextEvent.startMinute).padStart(2, '0')})`
+                );
+            }
+        }
+    }
+
+    if (overlapIssues.length > 0) {
+        console.error("\n--- Time Overlap Warnings ---");
+        overlapIssues.forEach(issue => console.error(`ERROR: ${issue}`));
+        console.error("------------------------------\n");
+    } else {
+        console.log("\n--- Time Overlap Validation: No overlaps detected. ---\n");
+    }
+
+    // --- Energy Validation ---
+    schedule.forEach(event => {
         if (event.energy !== undefined && typeof event.energy === 'number') {
             dailyEnergyTotals[event.day] += event.energy;
         }
     });
 
-    // Then, process repeating events and add their energy to relevant days,
-    // only if that day's slot isn't already covered by a more specific event.
-    // This requires re-simulating the app's event layering.
-    // However, the "schedule" here is already the final, processed list.
-    // We need to re-extract the base-level daily events for each day,
-    // accounting for overrides, similar to how the calendar app would *actually* render.
-
-    // Let's create a temporary structure that represents the final expanded schedule for energy calculation.
-    const expandedDailySchedule = ALL_DAYS_INDICES.map(() => new Map()); // Map<time_slot_key, event> for each day
-
-    schedule.forEach(event => {
-        if (event.day !== undefined) {
-            const key = `${event.startHour}_${event.startMinute}_${event.endHour}_${event.endMinute}`;
-            expandedDailySchedule[event.day].set(key, event);
-        } else if (event['repeat-weekday']) {
-            WEEKDAY_INDICES.forEach(dayIndex => {
-                const key = `${event.startHour}_${event.startMinute}_${event.endHour}_${event.endMinute}`;
-                // Only add if not already overridden by a specific day event
-                if (!expandedDailySchedule[dayIndex].has(key)) {
-                    expandedDailySchedule[dayIndex].set(key, { ...event, day: dayIndex });
-                }
-            });
-        } else if (event['repeat-weekend']) {
-            WEEKEND_INDICES.forEach(dayIndex => {
-                const key = `${event.startHour}_${event.startMinute}_${event.endHour}_${event.endMinute}`;
-                // Only add if not already overridden by a specific day event
-                if (!expandedDailySchedule[dayIndex].has(key)) {
-                    expandedDailySchedule[dayIndex].set(key, { ...event, day: dayIndex });
-                }
-            });
+    const energyIssues = [];
+    dailyEnergyTotals.forEach((total, dayIndex) => {
+        if (total !== targetEnergy) {
+            energyIssues.push(`${dayNames[dayIndex]}: Expected ${targetEnergy}, Got ${total}`);
         }
     });
 
-    // Now calculate totals from the expandedDailySchedule
-    ALL_DAYS_INDICES.forEach(dayIndex => {
-        let totalEnergyForDay = 0;
-        expandedDailySchedule[dayIndex].forEach(event => {
-            if (event.energy !== undefined && typeof event.energy === 'number') {
-                totalEnergyForDay += event.energy;
-            }
-        });
-        dailyEnergyTotals[dayIndex] = totalEnergyForDay;
-
-        if (totalEnergyForDay !== targetEnergy) {
-            validationIssues.push(
-                `${dayNames[dayIndex]}: Expected ${TARGET_DAILY_ENERGY}, Got ${totalEnergyForDay}`
-            );
-        }
-    });
-
-    if (validationIssues.length > 0) {
+    if (energyIssues.length > 0) {
         console.warn("\n--- Daily Energy Validation Warnings ---");
-        validationIssues.forEach(issue => console.warn(`WARNING: ${issue}`));
+        energyIssues.forEach(issue => console.warn(`WARNING: ${issue}`));
         console.warn("----------------------------------------\n");
     } else {
         console.log("\n--- Daily Energy Validation: All days meet target energy. ---\n");
     }
+
+    return overlapIssues.length === 0; // Return true if valid, false if not
 }
 
 
 const finalGeneratedSchedule = buildSchedule(scheduleDefinitions);
-validateDailyEnergy(finalGeneratedSchedule, TARGET_DAILY_ENERGY);
+const isScheduleValid = validateSchedule(finalGeneratedSchedule, TARGET_DAILY_ENERGY);
 
 // --- Write to JSON file ---
-try {
-    fs.writeFileSync(OUTPUT_FILE, JSON.stringify(finalGeneratedSchedule, null, 2));
-    console.log(`Successfully generated schedule to ${OUTPUT_FILE}`);
-} catch (error) {
-    console.error(`Error writing schedule file: ${error.message}`);
+if (isScheduleValid) {
+    try {
+        fs.writeFileSync(OUTPUT_FILE, JSON.stringify(finalGeneratedSchedule, null, 2));
+        console.log(`Successfully generated schedule to ${OUTPUT_FILE}`);
+    } catch (error) {
+        console.error(`Error writing schedule file: ${error.message}`);
+    }
+} else {
+    console.error("Schedule generation aborted due to time overlaps. Please fix the schedule definitions.");
 }
