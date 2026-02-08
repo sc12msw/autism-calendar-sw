@@ -1,5 +1,6 @@
 import React from 'react';
 import EnergyBar from './EnergyBar';
+import styles from './Header.module.css';
 
 const TodaySummary = ({ events, today }) => {
   const currentHour = today.getHours();
@@ -7,7 +8,7 @@ const TodaySummary = ({ events, today }) => {
   const currentTimeInMinutes = currentHour * 60 + currentMinute;
   
   return (
-    <ul id="today-events-list">
+    <ul className={styles.todayEventsList}>
       {events.length > 0 ? (
         events.map((event, index) => {
           const eventStartInMinutes = event.startHour * 60 + event.startMinute;
@@ -34,15 +35,18 @@ const Header = ({ today, schedule }) => {
 
   return (
     <>
-      <h1>Nar Shaddaa Calendar</h1>
-      <div id="current-day-display">
-        <div id="current-day-header">
-          <span id="current-day">{today.toLocaleDateString('en-US', { weekday: 'long' })}</span>
-          <span id="current-date">{today.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+ 
+      <div className={styles.currentDayDisplay}>
+        <div className={styles.currentDayHeader}>
+          <span className={styles.currentDay}>{today.toLocaleDateString('en-US', { weekday: 'long' })}</span>
+          <span className={styles.currentDate}>{today.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
         </div>
         <TodaySummary events={todaysEvents} today={today} />
-        <EnergyBar dayIndex={currentDayIndex} dayEvents={todaysEvents} today={today} currentDayIndex={currentDayIndex} />
+        
       </div>
+      <div className={styles.energyContainer}>      
+        <EnergyBar dayIndex={currentDayIndex} dayEvents={todaysEvents} today={today} currentDayIndex={currentDayIndex} />
+        </div>
     </>
   );
 };

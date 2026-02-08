@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './DesktopCalendar.module.css';
 
 const DesktopCalendar = ({ schedule, today }) => {
   const currentDayIndex = today.getDay();
@@ -20,8 +21,8 @@ const DesktopCalendar = ({ schedule, today }) => {
   });
   
   return (
-    <div id="calendar-container">
-      <table id="calendar">
+    <div className={styles.calendarContainer}>
+      <table className={styles.calendar}>
         <thead>
           <tr>
             <th>Time</th>
@@ -52,13 +53,13 @@ const DesktopCalendar = ({ schedule, today }) => {
                   isActiveEvent = currentTimeInMinutes >= eventStartInMinutes && currentTimeInMinutes < eventEndInMinutes;
                 }
 
-                let className = '';
-                if(isCurrentDay) className += 'current-day-column-cell ';
-                if(event) className += 'event-start ';
-                if(isActiveEvent) className += 'current-active-event';
+                let classNames = [];
+                if(isCurrentDay) classNames.push(styles.currentDayColumnCell);
+                if(event) classNames.push(styles.eventStart);
+                if(isActiveEvent) classNames.push(styles.currentActiveEvent);
 
                 return (
-                  <td key={day} className={className.trim()} data-day={day}>
+                  <td key={day} className={classNames.join(' ')} data-day={day}>
                     {event ? event.title : ''}
                   </td>
                 );

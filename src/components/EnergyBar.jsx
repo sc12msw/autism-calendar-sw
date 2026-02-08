@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './EnergyBar.module.css';
 
 const EnergyBar = ({ dayIndex, dayEvents, today, currentDayIndex }) => {
   if (dayIndex !== currentDayIndex) {
@@ -12,31 +13,43 @@ const EnergyBar = ({ dayIndex, dayEvents, today, currentDayIndex }) => {
   const currentTimeInMinutes = currentHour * 60 + currentMinute;
 
   dayEvents.forEach(event => {
-    const eventEndInMinutes = event.endHour * 60 + event.endMinute;
-    if (eventEndInMinutes < currentTimeInMinutes) {
+    const eventStartInMinutes = event.startHour * 60 + event.startMinute;
+    if (eventStartInMinutes <= currentTimeInMinutes) {
         currentEnergy += event.energy;
     }
   });
 
-  currentEnergy = Math.max(0, Math.min(MAX_ENERGY, currentEnergy));
-  const energyPercentage = (currentEnergy / MAX_ENERGY) * 100;
+  // Remove upper cap for currentEnergy, keep lower cap at 0
+  currentEnergy = Math.max(0, currentEnergy);
 
+  let displayValue = `${currentEnergy}/${MAX_ENERGY}`;
+  let barWidth = `${(currentEnergy / MAX_ENERGY) * 100}%`;
   let barColor;
-  if (energyPercentage > 60) {
-    barColor = '#4ecdc4'; // Healthy - Teal
-  } else if (energyPercentage > 30) {
-    barColor = '#ffe81f'; // Warning - Yellow
-  } else {
-    barColor = '#ff69b4'; // Danger - Pink
+  let textColor;
+
+  if (currentEnergy > MAX_ENERGY) {
+    barColor = 'red'; // Over max color
+    textColor = 'red';
+    displayValue = `OVER! ${currentEnergy}/${MAX_ENERGY}`; // Message
+    barWidth = '100%'; // Cap visual width at 100%
+  } else if (currentEnergy > (MAX_ENERGY * 0.6)) { // Healthy - Teal
+    barColor = '#4ecdc4'; 
+    textColor = '#4ecdc4';
+  } else if (currentEnergy > (MAX_ENERGY * 0.3)) { // Warning - Yellow
+    barColor = '#ffe81f';
+    textColor = '#ffe81f';
+  } else { // Danger - Pink
+    barColor = '#ff69b4';
+    textColor = '#ff69b4';
   }
   
   return (
-    <div id="energy-bar-container">
-      <span className="energy-label">Daily Energy:</span>
-      <div className="energy-bar-background">
-        <div id="energy-bar" style={{ width: `${energyPercentage}%`, backgroundColor: barColor }}></div>
+    <div className={styles.energyBarContainer}>
+      <span className={styles.energyLabel}>Daily Energy:</span>
+      <div className={styles.energyBarBackground}>
+        <div className={styles.energyBar} style={{ width: barWidth, backgroundColor: barColor }}></div>
       </div>
-      <span id="energy-value">{`${currentEnergy}/${MAX_ENERGY}`}</span>
+      <span className={styles.energyValue} style={{ color: textColor }}>{displayValue}</span>
     </div>
   );
 };

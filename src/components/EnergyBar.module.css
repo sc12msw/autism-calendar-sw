@@ -1,0 +1,44 @@
+.energyBarContainer {
+    display: flex;
+    align-items: center;
+    width: 100%; /* Ensure it takes full width of parent */
+    margin-bottom: 20px; /* Added margin-bottom for spacing */
+    padding: 8px 10px; /* Reduced vertical padding */
+    background-color: #1f1f3a;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5) inset;
+    order: 1; /* Place it after header */
+}
+
+.energyLabel {
+    font-family: 'StarJedi', sans-serif;
+    color: #a0a0ff;
+    margin-right: 10px;
+    font-size: 0.9em;
+}
+
+.energyBarBackground {
+    flex-grow: 1;
+    height: 20px;
+    background-color: #111;
+    border-radius: 10px;
+    border: 1px solid #4a4a6b;
+    overflow: hidden;
+}
+
+.energyBar {
+    height: 100%;
+    width: 50%; /* Default width, will be updated by JS */
+    background-color: #4ecdc4; /* Default color, will be updated by JS */
+    border-radius: 10px;
+    transition: width 0.5s ease-in-out, background-color 0.5s ease-in-out;
+    box-shadow: 0 0 10px rgba(78, 205, 196, 0.7);
+}
+
+.energyValue {
+    font-family: 'AurekBesh', sans-serif;
+    color: #4ecdc4;
+    margin-left: 10px;
+    font-size: 1em;
+    font-weight: bold;
+}

@@ -1,0 +1,76 @@
+.calendarContainer {
+    overflow-x: auto;
+    flex-grow: 1; /* Allow calendar container to grow and take available space */
+    margin: 0 auto; /* Center the calendar container */
+    max-width: calc(100% - 40px); /* Account for body padding */
+    /* display is now purely JS controlled */
+}
+
+.calendar {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    min-width: 800px;
+}
+
+.calendar th, .calendar td {
+    border: 1px solid #4a4a6b; /* Darker, slightly purple border */
+    padding: 12px 8px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.calendar th {
+    background-color: #3b3b5c; /* Darker header background */
+    color: #a0a0ff; /* Lighter blue for headers */
+    font-family: 'AurekBesh', sans-serif;
+    font-size: 1.1em;
+    text-transform: uppercase;
+}
+
+.calendar td {
+    background-color: #1f1f3a; /* Dark cell background */
+    color: #e0e0e0; /* Off-white for cell text */
+    font-size: 1em;
+}
+
+.calendar tbody tr:nth-child(even) td {
+    background-color: #252545; /* Slightly different background for even rows */
+}
+
+/* Hover effect */
+.calendar td:hover {
+    background-color: #4a4a6b; /* Hover to match border color */
+    cursor: pointer;
+}
+
+/* Current Day Highlight */
+.currentDayColumnHeader {
+    background-color: #5d3b7e; /* Darker purple for highlighted header */
+    color: #ff69b4; /* Neon pink for highlighted header text */
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.7); /* Pink glow */
+}
+
+.currentDayColumnCell {
+    background-color: #3f1e5c; /* Dark purple for highlighted cells */
+    color: #ff8cbf; /* Lighter neon pink for highlighted cell text */
+    border-color: #ff69b4; /* Matching border color */
+}
+
+.eventStart {
+    font-family: 'StarJedi', sans-serif; /* Apply StarJedi font to event cells */
+    background-color: #0f4c75; /* Dark blue for events */
+    color: #bbeaff; /* Light blue text for events */
+    font-weight: bold;
+    border-left: 3px solid #3282b8; /* Stronger border for event start */
+}
+
+.calendar td.currentActiveEvent {
+    background-color: #ff69b4 !important; /* Match nav button hover background */
+    color: #5d3b7e !important; /* Match nav button hover text color */
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.9) !important; /* Matching pink glow, reduced intensity */
+    border-left: 3px solid #5d3b7e; /* Border matching text color */
+    transform: scale(1.05); /* Slightly larger scale */
+    font-size: 1.15em; /* Slightly larger text */
+    transition: all 0.2s ease-in-out; /* Smooth transition */
+}

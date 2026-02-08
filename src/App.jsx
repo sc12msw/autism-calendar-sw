@@ -9,13 +9,49 @@ function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [showFullCalendar, setShowFullCalendar] = useState(false);
   const [mobileDayIndex, setMobileDayIndex] = useState(new Date().getDay());
-  const [currentTime, setCurrentTime] = useState(new Date()); // New state for dynamic time
+  const [currentTime, setCurrentTime] = useState(new Date());
 
   // Fetch schedule on mount
   useEffect(() => {
     fetch('/schedule.json')
       .then(response => response.json())
-      .then(data => setSchedule(data))
+      .then(data => {
+        const rawSchedule = data;
+        const expandedSchedule = [];
+
+        rawSchedule.forEach(event => {
+          if (event['repeat-weekday'] && event['repeat-weekend']) {
+            // Repeat every day (Sunday=0 to Saturday=6)
+            for (let day = 0; day <= 6; day++) {
+              expandedSchedule.push({ ...event, day: day });
+            }
+          } else if (event['repeat-weekday']) {
+            // Repeat Monday to Friday
+            for (let day = 1; day <= 5; day++) { // Monday=1 to Friday=5
+              expandedSchedule.push({ ...event, day: day });
+            }
+          } else if (event['repeat-weekend']) {
+            // Repeat Saturday and Sunday
+            expandedSchedule.push({ ...event, day: 0 }); // Sunday
+            expandedSchedule.push({ ...event, day: 6 }); // Saturday
+          } else {
+            // Non-repeating event, add as-is (must have a 'day' property)
+            if ('day' in event) {
+                expandedSchedule.push(event);
+            } else {
+                console.warn("Event missing 'day' or repeat rule, skipping:", event);
+            }
+          }
+        });
+
+        // Sort the expanded schedule by day and then by start time
+        expandedSchedule.sort((a, b) => {
+            if (a.day !== b.day) return a.day - b.day;
+            return (a.startHour * 60 + a.startMinute) - (b.startHour * 60 + b.startMinute);
+        });
+
+        setSchedule(expandedSchedule);
+      })
       .catch(error => console.error('Error fetching schedule:', error));
   }, []);
 
@@ -34,10 +70,11 @@ function App() {
       setCurrentTime(new Date());
     }, 60 * 1000); // Update every minute
     return () => clearInterval(timer);
-  }, []); // Empty dependency array means this runs once on mount and cleans up on unmount
+  }, []);
   
-  const currentDayIndex = currentTime.getDay(); // Use dynamic currentTime
-  const dayEvents = schedule.filter(event => event.day === mobileDayIndex);
+  const currentDayIndex = currentTime.getDay();
+  // Filter for the mobile view's specific day
+  const mobileViewDayEvents = schedule.filter(event => event.day === mobileDayIndex);
 
   const handlePrevDay = () => {
     setMobileDayIndex(prevIndex => (prevIndex - 1 + 7) % 7);
@@ -69,8 +106,8 @@ function App() {
         ) : (
           <MobileCalendar 
             dayIndex={mobileDayIndex}
-            dayEvents={dayEvents}
-            today={currentTime} // Pass dynamic currentTime
+            dayEvents={mobileViewDayEvents}
+            today={currentTime}
             currentDayIndex={currentDayIndex}
             onPrev={handlePrevDay}
             onNext={handleNextDay}
