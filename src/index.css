@@ -1,0 +1,365 @@
+@font-face {
+    font-family: 'AurekBesh';
+    src: url('/Aurebesh.otf') format('opentype'); /* Corrected path */
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'StarJedi';
+    src: url('/Starjedi.ttf') format('truetype'); /* New font */
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1a1a2e; /* Dark, purplish-blue for a cyber-punk feel */
+    color: #e0e0e0; /* Off-white for general text */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Arrange items vertically */
+    min-height: 100vh;
+    width: 100%; /* Ensure body takes full width */
+    margin: 0;
+    padding: 20px; /* Add padding directly to body */
+    box-sizing: border-box;
+    overflow-x: hidden; /* Prevent horizontal scroll on body */
+}
+
+h1 {
+    font-family: 'AurekBesh', sans-serif;
+    color: #4ecdc4; /* Neon teal for titles */
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 8px rgba(78, 205, 196, 0.9); /* Stronger neon glow */
+    text-align: center; /* Center the title */
+}
+
+#view-toggle-container {
+    display: none; /* Hidden by default, shown on mobile */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#toggle-view-btn {
+    font-family: 'AurekBesh', sans-serif;
+    background-color: #5d3b7e;
+    color: #ff69b4;
+    border: 1px solid #ff69b4;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#toggle-view-btn:hover {
+    background-color: #ff69b4;
+    color: #5d3b7e;
+}
+
+
+#current-day-display {
+    background-color: #3b3b5c; /* Darker background for the display block */
+    padding: 10px 15px; /* Reduced padding */
+    margin: 0 auto 20px auto; /* Reduced bottom margin */
+    border-radius: 5px;
+    border: 1px solid #a0a0ff; /* Light blue border */
+    box-shadow: 0 0 15px rgba(160, 160, 255, 0.6); /* Neon blue glow */
+    max-width: 95%; /* Keep a max-width for readability */
+    width: fit-content; /* Adjust width to content */
+    display: flex; /* Use flexbox to align children */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center children horizontally */
+}
+
+#current-day-header {
+    margin-bottom: 10px; /* Reduced space between header and events/energy */
+}
+
+#current-day {
+    font-family:'AurekBesh', sans-serif; /* Keep AurekBesh for the day, not StarJedi */
+    color: #a0a0ff; /* Neon blue for the day of the week */
+    font-size: 1.8em;
+    margin: 0 10px 0 0; /* Add some space to the right of the day */
+    text-shadow: 0 0 5px rgba(160, 160, 255, 0.8);
+    display: inline-block; /* Allow day and date to be on the same line */
+}
+
+#current-date {
+    font-family:'AurekBesh', sans-serif; /* Keep AurekBesh for the date, not StarJedi */
+    color: #4ecdc4; /* Neon teal for the date */
+    font-size: 1.2em;
+    margin: 0;
+    text-shadow: 0 0 3px rgba(78, 205, 196, 0.7);
+    display: inline-block; /* Allow day and date to be on the same line */
+}
+
+#today-events-list {
+    list-style: none; /* Remove bullet points */
+    padding: 0;
+    margin: 0;
+    text-align: left; /* Align event text to the left */
+    width: 100%; /* Make list take full width of its parent */
+}
+
+#today-events-list li {
+    font-family: 'StarJedi', sans-serif; /* Apply StarJedi font to events list */
+    background-color: #2b2b40; /* Slightly darker background for list items */
+    margin-bottom: 8px;
+    padding: 10px 15px;
+    border-radius: 4px;
+    color: #e0e0e0; /* Event text color */
+    font-size: 1em;
+    border-left: 3px solid #ff69b4; /* Neon pink accent */
+    box-shadow: 0 0 8px rgba(255, 105, 180, 0.3); /* Subtle pink glow */
+}
+
+#calendar-container {
+    overflow-x: auto;
+    flex-grow: 1; /* Allow calendar container to grow and take available space */
+    margin: 0 auto; /* Center the calendar container */
+    max-width: calc(100% - 40px); /* Account for body padding */
+    /* display is now purely JS controlled */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    min-width: 800px;
+}
+
+th, td {
+    border: 1px solid #4a4a6b; /* Darker, slightly purple border */
+    padding: 12px 8px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+th {
+    background-color: #3b3b5c; /* Darker header background */
+    color: #a0a0ff; /* Lighter blue for headers */
+    font-family: 'AurekBesh', sans-serif;
+    font-size: 1.1em;
+    text-transform: uppercase;
+}
+
+td {
+    background-color: #1f1f3a; /* Dark cell background */
+    color: #e0e0e0; /* Off-white for cell text */
+    font-family: 'AurekBesh', sans-serif;
+    font-size: 1em;
+}
+
+tbody tr:nth-child(even) td {
+    background-color: #252545; /* Slightly different background for even rows */
+}
+
+/* Hover effect */
+td:hover {
+    background-color: #4a4a6b; /* Hover to match border color */
+    cursor: pointer;
+}
+
+/* Current Day Highlight */
+.current-day-column-header {
+    background-color: #5d3b7e; /* Darker purple for highlighted header */
+    color: #ff69b4; /* Neon pink for highlighted header text */
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.7); /* Pink glow */
+}
+
+.current-day-column-cell {
+    background-color: #3f1e5c; /* Dark purple for highlighted cells */
+    color: #ff8cbf; /* Lighter neon pink for highlighted cell text */
+    border-color: #ff69b4; /* Matching border color */
+}
+
+.event-start {
+    font-family: 'StarJedi', sans-serif; /* Apply StarJedi font to event cells */
+    background-color: #0f4c75; /* Dark blue for events */
+    color: #bbeaff; /* Light blue text for events */
+    font-weight: bold;
+    border-left: 3px solid #3282b8; /* Stronger border for event start */
+    text-shadow: 0 0 5px rgba(50, 130, 184, 0.7); /* Blue glow */
+}
+
+#today-events-list li.current-active-event,
+#mobile-events-list li.current-active-event,
+td.current-active-event {
+    background-color: #ff69b4 !important; /* Match nav button hover background */
+    color: #5d3b7e !important; /* Match nav button hover text color */
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.9) !important; /* Matching pink glow, reduced intensity */
+    border-left: 3px solid #5d3b7e; /* Border matching text color */
+    transform: scale(1.05); /* Slightly larger scale */
+    font-size: 1.15em; /* Slightly larger text */
+    transition: all 0.2s ease-in-out; /* Smooth transition */
+}
+
+/* Mobile Calendar View */
+#mobile-calendar-view {
+    flex-direction: column;
+    width: 100%; /* Full width */
+    max-width: 100%; /* Override previous max-width */
+    min-height: 400px;
+    flex-grow: 1; /* Allow it to grow and push nav to bottom */
+    /* display is now purely JS controlled */
+}
+
+.mobile-nav {
+    display: flex;
+    justify-content: space-around; /* Distribute space evenly */
+    align-items: center;
+    width: 100%;
+    margin-top: auto; /* Push to the bottom */
+    padding-top: 20px; /* Space from events list */
+    order: 2; /* Ensure it's rendered last in flex column */
+}
+
+#mobile-current-day-header-container {
+    order: 0;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#energy-bar-container {
+    display: flex;
+    align-items: center;
+    width: 100%; /* Ensure it takes full width of parent */
+    margin-bottom: 20px; /* Added margin-bottom for spacing */
+    padding: 8px 10px; /* Reduced vertical padding */
+    background-color: #1f1f3a;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5) inset;
+    order: 1; /* Place it after header */
+}
+
+.energy-label {
+    font-family: 'AurekBesh', sans-serif;
+    color: #a0a0ff;
+    margin-right: 10px;
+    font-size: 0.9em;
+}
+
+.energy-bar-background {
+    flex-grow: 1;
+    height: 20px;
+    background-color: #111;
+    border-radius: 10px;
+    border: 1px solid #4a4a6b;
+    overflow: hidden;
+}
+
+#energy-bar {
+    height: 100%;
+    width: 50%; /* Default width, will be updated by JS */
+    background-color: #4ecdc4; /* Default color, will be updated by JS */
+    border-radius: 10px;
+    transition: width 0.5s ease-in-out, background-color 0.5s ease-in-out;
+    box-shadow: 0 0 10px rgba(78, 205, 196, 0.7);
+}
+
+#energy-value {
+    font-family: 'AurekBesh', sans-serif;
+    color: #4ecdc4;
+    margin-left: 10px;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+#mobile-current-day-header {
+    font-family: 'AurekBesh', sans-serif;
+    color: #a0a0ff;
+    font-size: 1.5em;
+    text-shadow: 0 0 5px rgba(160, 160, 255, 0.8);
+    flex-grow: 1;
+    text-align: center;
+    margin: 0 10px; /* Add horizontal margin */
+}
+
+.nav-btn {
+    background-color: #5d3b7e; /* Purple */
+    color: #ff69b4; /* Neon pink */
+    border: 1px solid #ff69b4;
+    padding: 12px 18px; /* Nicer padding */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.3em; /* Slightly larger buttons */
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 0 5px rgba(255, 105, 180, 0.5);
+}
+
+.nav-btn:hover {
+    background-color: #ff69b4;
+    color: #5d3b7e;
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.8);
+}
+
+#mobile-events-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    flex-grow: 1; /* Allow event list to take available space */
+    order: 1; /* Render before the nav */
+}
+
+#mobile-events-list li {
+    font-family: 'StarJedi', sans-serif;
+    background-color: #1f1f3a;
+    margin-bottom: 10px;
+    padding: 12px 15px;
+    border-radius: 6px;
+    color: #e0e0e0;
+    font-size: 1.1em;
+    border-left: 3px solid #4ecdc4; /* Neon teal accent */
+    box-shadow: 0 0 10px rgba(78, 205, 196, 0.4);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    #view-toggle-container {
+        display: block; /* Show the toggle button on mobile */
+    }
+    h1 {
+        font-size: 2em;
+    }
+
+    th, td {
+        padding: 8px 5px;
+        font-size: 0.9em;
+    }
+}
+
+@media (min-width: 769px) {
+    #view-toggle-container {
+        display: none; /* Hide toggle button on desktop */
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    h1 {
+        font-size: 1.5em;
+    }
+    #mobile-calendar-view {
+        padding: 15px;
+    }
+    .nav-btn {
+        padding: 10px 15px; /* Slightly smaller on very small screens */
+        font-size: 1.1em;
+    }
+    #mobile-current-day-header {
+        font-size: 1.2em;
+    }
+    #mobile-events-list li {
+        font-size: 0.9em;
+        padding: 10px 12px;
+    }
+}
