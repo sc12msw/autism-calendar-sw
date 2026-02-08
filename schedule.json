@@ -9,6 +9,15 @@
     "day": 0
   },
   {
+    "title": "Shower",
+    "startHour": 7,
+    "startMinute": 10,
+    "endHour": 7,
+    "endMinute": 30,
+    "energy": 0,
+    "day": 0
+  },
+  {
     "title": "Relaxed Morning (Wake, Breakfast)",
     "startHour": 8,
     "startMinute": 0,
@@ -36,12 +45,30 @@
     "day": 0
   },
   {
-    "title": "Free Time / Personal Projects",
+    "title": "Prepare for the week ahead",
     "startHour": 13,
+    "startMinute": 0,
+    "endHour": 15,
+    "endMinute": 0,
+    "energy": -2,
+    "day": 0
+  },
+  {
+    "title": "Quiet Hobby",
+    "startHour": 15,
     "startMinute": 0,
     "endHour": 18,
     "endMinute": 0,
     "energy": 3,
+    "day": 0
+  },
+  {
+    "title": "Sunday Dinner (Special)",
+    "startHour": 18,
+    "startMinute": 0,
+    "endHour": 19,
+    "endMinute": 0,
+    "energy": 0,
     "day": 0
   },
   {
@@ -72,39 +99,6 @@
     "day": 0
   },
   {
-    "day": 0,
-    "event": {
-      "title": "Prepare for the week ahead",
-      "startHour": 13,
-      "startMinute": 0,
-      "endHour": 15,
-      "endMinute": 0,
-      "energy": -2
-    }
-  },
-  {
-    "day": 0,
-    "event": {
-      "title": "Quiet Hobby",
-      "startHour": 15,
-      "startMinute": 0,
-      "endHour": 18,
-      "endMinute": 0,
-      "energy": 3
-    }
-  },
-  {
-    "day": 0,
-    "event": {
-      "title": "Dinner",
-      "startHour": 18,
-      "startMinute": 0,
-      "endHour": 19,
-      "endMinute": 0,
-      "energy": 0
-    }
-  },
-  {
     "title": "Brush Teeth",
     "startHour": 7,
     "startMinute": 0,
@@ -114,21 +108,21 @@
     "day": 1
   },
   {
-    "title": "Morning Routine (Wake, Dress, Breakfast)",
+    "title": "Shower",
     "startHour": 7,
     "startMinute": 10,
-    "endHour": 8,
-    "endMinute": 0,
-    "energy": -2,
+    "endHour": 7,
+    "endMinute": 30,
+    "energy": 0,
     "day": 1
   },
   {
-    "title": "Commute to Work",
-    "startHour": 8,
-    "startMinute": 0,
-    "endHour": 9,
+    "title": "Morning Routine (Wake, Dress, Breakfast)",
+    "startHour": 7,
+    "startMinute": 30,
+    "endHour": 8,
     "endMinute": 0,
-    "energy": -1,
+    "energy": -2,
     "day": 1
   },
   {
@@ -195,15 +189,6 @@
     "day": 1
   },
   {
-    "title": "Commute Home",
-    "startHour": 17,
-    "startMinute": 0,
-    "endHour": 18,
-    "endMinute": 0,
-    "energy": -1,
-    "day": 1
-  },
-  {
     "title": "Decompression Time (Music, Low light)",
     "startHour": 18,
     "startMinute": 0,
@@ -240,21 +225,21 @@
     "day": 2
   },
   {
-    "title": "Morning Routine (Wake, Dress, Breakfast)",
+    "title": "Shower",
     "startHour": 7,
     "startMinute": 10,
-    "endHour": 8,
-    "endMinute": 0,
-    "energy": -2,
+    "endHour": 7,
+    "endMinute": 30,
+    "energy": 0,
     "day": 2
   },
   {
-    "title": "Commute to Work",
-    "startHour": 8,
-    "startMinute": 0,
-    "endHour": 9,
+    "title": "Morning Routine (Wake, Dress, Breakfast)",
+    "startHour": 7,
+    "startMinute": 30,
+    "endHour": 8,
     "endMinute": 0,
-    "energy": -1,
+    "energy": -2,
     "day": 2
   },
   {
@@ -321,15 +306,6 @@
     "day": 2
   },
   {
-    "title": "Commute Home",
-    "startHour": 17,
-    "startMinute": 0,
-    "endHour": 18,
-    "endMinute": 0,
-    "energy": -1,
-    "day": 2
-  },
-  {
     "title": "Decompression Time (Music, Low light)",
     "startHour": 18,
     "startMinute": 0,
@@ -366,165 +342,58 @@
     "day": 3
   },
   {
-    "title": "Morning Routine (Wake, Dress, Breakfast)",
+    "title": "Shower",
     "startHour": 7,
     "startMinute": 10,
+    "endHour": 7,
+    "endMinute": 30,
+    "energy": 0,
+    "day": 3
+  },
+  {
+    "title": "Morning Routine (Wake, Dress, Breakfast)",
+    "startHour": 7,
+    "startMinute": 30,
     "endHour": 8,
     "endMinute": 0,
     "energy": -2,
     "day": 3
   },
   {
-    "title": "Commute to Work",
-    "startHour": 8,
-    "startMinute": 0,
-    "endHour": 9,
-    "endMinute": 0,
-    "energy": -1,
-    "day": 3
-  },
-  {
-    "title": "Focused Work Block 1",
+    "title": "Appointments / Errands",
     "startHour": 9,
     "startMinute": 0,
-    "endHour": 10,
-    "endMinute": 30,
+    "endHour": 11,
+    "endMinute": 0,
     "energy": -3,
     "day": 3
   },
   {
-    "title": "Short Break / Sensory Reset",
-    "startHour": 10,
-    "startMinute": 30,
-    "endHour": 11,
+    "title": "Rest & Recover",
+    "startHour": 11,
+    "startMinute": 0,
+    "endHour": 12,
     "endMinute": 0,
     "energy": 2,
     "day": 3
   },
   {
-    "title": "Focused Work Block 2",
-    "startHour": 11,
-    "startMinute": 0,
-    "endHour": 12,
-    "endMinute": 30,
-    "energy": -3,
-    "day": 3
-  },
-  {
-    "title": "Lunch Break (Quiet)",
-    "startHour": 12,
-    "startMinute": 30,
-    "endHour": 13,
-    "endMinute": 30,
-    "energy": 1,
-    "day": 3
-  },
-  {
-    "title": "Meetings / Collaborative Work",
+    "title": "Deep Work",
     "startHour": 13,
-    "startMinute": 30,
-    "endHour": 15,
+    "startMinute": 0,
+    "endHour": 17,
     "endMinute": 0,
     "energy": -4,
     "day": 3
   },
   {
-    "title": "Snack & Hydrate",
-    "startHour": 15,
-    "startMinute": 0,
-    "endHour": 15,
-    "endMinute": 30,
-    "energy": 1,
-    "day": 3
-  },
-  {
-    "title": "Wrap-up tasks",
-    "startHour": 15,
-    "startMinute": 30,
-    "endHour": 17,
-    "endMinute": 0,
-    "energy": -2,
-    "day": 3
-  },
-  {
-    "title": "Commute Home",
+    "title": "Evening Free Time",
     "startHour": 17,
-    "startMinute": 0,
-    "endHour": 18,
-    "endMinute": 0,
-    "energy": -1,
-    "day": 3
-  },
-  {
-    "title": "Decompression Time (Music, Low light)",
-    "startHour": 18,
-    "startMinute": 0,
-    "endHour": 19,
-    "endMinute": 0,
-    "energy": 3,
-    "day": 3
-  },
-  {
-    "title": "Dinner",
-    "startHour": 19,
-    "startMinute": 0,
-    "endHour": 20,
-    "endMinute": 0,
-    "energy": 0,
-    "day": 3
-  },
-  {
-    "title": "Wind-down (Reading as a couple)",
-    "startHour": 21,
     "startMinute": 0,
     "endHour": 22,
     "endMinute": 0,
-    "energy": 2,
+    "energy": 3,
     "day": 3
-  },
-  {
-    "day": 3,
-    "event": {
-      "title": "Appointments / Errands",
-      "startHour": 9,
-      "startMinute": 0,
-      "endHour": 11,
-      "endMinute": 0,
-      "energy": -3
-    }
-  },
-  {
-    "day": 3,
-    "event": {
-      "title": "Rest & Recover",
-      "startHour": 11,
-      "startMinute": 0,
-      "endHour": 12,
-      "endMinute": 0,
-      "energy": 2
-    }
-  },
-  {
-    "day": 3,
-    "event": {
-      "title": "Deep Work",
-      "startHour": 13,
-      "startMinute": 0,
-      "endHour": 17,
-      "endMinute": 0,
-      "energy": -4
-    }
-  },
-  {
-    "day": 3,
-    "event": {
-      "title": "Evening Free Time",
-      "startHour": 17,
-      "startMinute": 0,
-      "endHour": 22,
-      "endMinute": 0,
-      "energy": 3
-    }
   },
   {
     "title": "Brush Teeth",
@@ -536,165 +405,58 @@
     "day": 4
   },
   {
-    "title": "Morning Routine (Wake, Dress, Breakfast)",
+    "title": "Shower",
     "startHour": 7,
     "startMinute": 10,
+    "endHour": 7,
+    "endMinute": 30,
+    "energy": 0,
+    "day": 4
+  },
+  {
+    "title": "Morning Routine (Wake, Dress, Breakfast)",
+    "startHour": 7,
+    "startMinute": 30,
     "endHour": 8,
     "endMinute": 0,
     "energy": -2,
     "day": 4
   },
   {
-    "title": "Commute to Work",
+    "title": "Social Outing / Event",
     "startHour": 8,
     "startMinute": 0,
-    "endHour": 9,
-    "endMinute": 0,
-    "energy": -1,
-    "day": 4
-  },
-  {
-    "title": "Focused Work Block 1",
-    "startHour": 9,
-    "startMinute": 0,
-    "endHour": 10,
-    "endMinute": 30,
-    "energy": -3,
-    "day": 4
-  },
-  {
-    "title": "Short Break / Sensory Reset",
-    "startHour": 10,
-    "startMinute": 30,
-    "endHour": 11,
-    "endMinute": 0,
-    "energy": 2,
-    "day": 4
-  },
-  {
-    "title": "Focused Work Block 2",
-    "startHour": 11,
-    "startMinute": 0,
     "endHour": 12,
-    "endMinute": 30,
-    "energy": -3,
+    "endMinute": 0,
+    "energy": -5,
     "day": 4
   },
   {
-    "title": "Lunch Break (Quiet)",
-    "startHour": 12,
-    "startMinute": 30,
-    "endHour": 13,
-    "endMinute": 30,
-    "energy": 1,
-    "day": 4
-  },
-  {
-    "title": "Meetings / Collaborative Work",
+    "title": "Recovery / Quiet Time",
     "startHour": 13,
-    "startMinute": 30,
-    "endHour": 15,
-    "endMinute": 0,
-    "energy": -4,
-    "day": 4
-  },
-  {
-    "title": "Snack & Hydrate",
-    "startHour": 15,
     "startMinute": 0,
-    "endHour": 15,
-    "endMinute": 30,
-    "energy": 1,
-    "day": 4
-  },
-  {
-    "title": "Wrap-up tasks",
-    "startHour": 15,
-    "startMinute": 30,
-    "endHour": 17,
+    "endHour": 16,
     "endMinute": 0,
-    "energy": -2,
+    "energy": 4,
     "day": 4
   },
   {
-    "title": "Commute Home",
-    "startHour": 17,
+    "title": "Hobby / Special Interest",
+    "startHour": 16,
     "startMinute": 0,
     "endHour": 18,
-    "endMinute": 0,
-    "energy": -1,
-    "day": 4
-  },
-  {
-    "title": "Decompression Time (Music, Low light)",
-    "startHour": 18,
-    "startMinute": 0,
-    "endHour": 19,
     "endMinute": 0,
     "energy": 3,
     "day": 4
   },
   {
-    "title": "Dinner",
-    "startHour": 19,
-    "startMinute": 0,
-    "endHour": 20,
-    "endMinute": 0,
-    "energy": 0,
-    "day": 4
-  },
-  {
-    "title": "Wind-down (Reading as a couple)",
-    "startHour": 21,
+    "title": "Evening Relaxation",
+    "startHour": 18,
     "startMinute": 0,
     "endHour": 22,
     "endMinute": 0,
     "energy": 2,
     "day": 4
-  },
-  {
-    "day": 4,
-    "event": {
-      "title": "Social Outing / Event",
-      "startHour": 8,
-      "startMinute": 0,
-      "endHour": 12,
-      "endMinute": 0,
-      "energy": -5
-    }
-  },
-  {
-    "day": 4,
-    "event": {
-      "title": "Recovery / Quiet Time",
-      "startHour": 13,
-      "startMinute": 0,
-      "endHour": 16,
-      "endMinute": 0,
-      "energy": 4
-    }
-  },
-  {
-    "day": 4,
-    "event": {
-      "title": "Hobby / Special Interest",
-      "startHour": 16,
-      "startMinute": 0,
-      "endHour": 18,
-      "endMinute": 0,
-      "energy": 3
-    }
-  },
-  {
-    "day": 4,
-    "event": {
-      "title": "Evening Relaxation",
-      "startHour": 18,
-      "startMinute": 0,
-      "endHour": 22,
-      "endMinute": 0,
-      "energy": 2
-    }
   },
   {
     "title": "Brush Teeth",
@@ -706,21 +468,21 @@
     "day": 5
   },
   {
-    "title": "Morning Routine (Wake, Dress, Breakfast)",
+    "title": "Shower",
     "startHour": 7,
     "startMinute": 10,
-    "endHour": 8,
-    "endMinute": 0,
-    "energy": -2,
+    "endHour": 7,
+    "endMinute": 30,
+    "energy": 0,
     "day": 5
   },
   {
-    "title": "Commute to Work",
-    "startHour": 8,
-    "startMinute": 0,
-    "endHour": 9,
+    "title": "Morning Routine (Wake, Dress, Breakfast)",
+    "startHour": 7,
+    "startMinute": 30,
+    "endHour": 8,
     "endMinute": 0,
-    "energy": -1,
+    "energy": -2,
     "day": 5
   },
   {
@@ -751,53 +513,17 @@
     "day": 5
   },
   {
-    "title": "Lunch Break (Quiet)",
-    "startHour": 12,
-    "startMinute": 30,
-    "endHour": 13,
-    "endMinute": 30,
-    "energy": 1,
-    "day": 5
-  },
-  {
-    "title": "Meetings / Collaborative Work",
+    "title": "Work",
     "startHour": 13,
-    "startMinute": 30,
-    "endHour": 15,
-    "endMinute": 0,
-    "energy": -4,
-    "day": 5
-  },
-  {
-    "title": "Snack & Hydrate",
-    "startHour": 15,
     "startMinute": 0,
-    "endHour": 15,
-    "endMinute": 30,
-    "energy": 1,
-    "day": 5
-  },
-  {
-    "title": "Wrap-up tasks",
-    "startHour": 15,
-    "startMinute": 30,
     "endHour": 17,
     "endMinute": 0,
-    "energy": -2,
+    "energy": -3,
     "day": 5
   },
   {
-    "title": "Commute Home",
+    "title": "Decompression",
     "startHour": 17,
-    "startMinute": 0,
-    "endHour": 18,
-    "endMinute": 0,
-    "energy": -1,
-    "day": 5
-  },
-  {
-    "title": "Decompression Time (Music, Low light)",
-    "startHour": 18,
     "startMinute": 0,
     "endHour": 19,
     "endMinute": 0,
@@ -805,55 +531,13 @@
     "day": 5
   },
   {
-    "title": "Dinner",
+    "title": "Socializing with friends (optional)",
     "startHour": 19,
-    "startMinute": 0,
-    "endHour": 20,
-    "endMinute": 0,
-    "energy": 0,
-    "day": 5
-  },
-  {
-    "title": "Wind-down (Reading as a couple)",
-    "startHour": 21,
     "startMinute": 0,
     "endHour": 22,
     "endMinute": 0,
-    "energy": 2,
+    "energy": -4,
     "day": 5
-  },
-  {
-    "day": 5,
-    "event": {
-      "title": "Work",
-      "startHour": 13,
-      "startMinute": 0,
-      "endHour": 17,
-      "endMinute": 0,
-      "energy": -3
-    }
-  },
-  {
-    "day": 5,
-    "event": {
-      "title": "Decompression",
-      "startHour": 17,
-      "startMinute": 0,
-      "endHour": 19,
-      "endMinute": 0,
-      "energy": 3
-    }
-  },
-  {
-    "day": 5,
-    "event": {
-      "title": "Socializing with friends (optional)",
-      "startHour": 19,
-      "startMinute": 0,
-      "endHour": 22,
-      "endMinute": 0,
-      "energy": -4
-    }
   },
   {
     "title": "Brush Teeth",
@@ -861,6 +545,15 @@
     "startMinute": 0,
     "endHour": 7,
     "endMinute": 10,
+    "energy": 0,
+    "day": 6
+  },
+  {
+    "title": "Shower",
+    "startHour": 7,
+    "startMinute": 10,
+    "endHour": 7,
+    "endMinute": 30,
     "energy": 0,
     "day": 6
   },
