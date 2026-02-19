@@ -33,11 +33,7 @@ function createEventBase(title, startHour, startMinute, endHour, endMinute, ener
 const scheduleDefinitions = [
     // --- Daily Recurring Events ---
     {
-        event: createEventBase("Brush Teeth", 7, 0, 7, 10, 0),
-        repeatType: 'daily'
-    },
-    {
-        event: createEventBase("Shower", 7, 10, 7, 30, 0),
+        event: createEventBase("Brush Teeth and Morning Routine", 6, 30, 7, 0, -1),
         repeatType: 'daily'
     },
     {
@@ -51,11 +47,7 @@ const scheduleDefinitions = [
 
     // --- Weekday Schedule ---
     {
-        event: createEventBase("Morning Routine (Wake, Dress, Breakfast)", 7, 30, 8, 0, -2),
-        repeatType: 'weekday'
-    },
-    {
-        event: createEventBase("Focused Work Block 1", 9, 0, 10, 30, -3),
+        event: createEventBase("Focused Work Block 1", 9, 0, 10, 30, -2),
         repeatType: 'weekday'
     },
     {
@@ -63,27 +55,27 @@ const scheduleDefinitions = [
         repeatType: 'weekday'
     },
     {
-        event: createEventBase("Focused Work Block 2", 11, 0, 12, 30, -3),
+        event: createEventBase("Focused Work Block 2", 11, 0, 13, 0, -2),
         repeatType: 'weekday'
     },
     {
-        event: createEventBase("Lunch Break (Quiet)", 12, 30, 13, 30, 1),
+        event: createEventBase("Lunch Break", 13, 0, 14, 0, 1),
         repeatType: 'weekday'
     },
     {
-        event: createEventBase("Meetings / Collaborative Work", 13, 30, 15, 0, -4),
+        event: createEventBase("Meetings / Collaborative Work", 14, 0, 15, 30, -2),
         repeatType: 'weekday'
     },
     {
-        event: createEventBase("Snack & Hydrate", 15, 0, 15, 30, 1),
+        event: createEventBase("Snack & Hydrate", 15, 30, 16, 0, 1),
         repeatType: 'weekday'
     },
     {
-        event: createEventBase("Wrap-up tasks", 15, 30, 17, 0, -2),
+        event: createEventBase("Focused Work Block 3", 16, 0, 18, 0, -2),
         repeatType: 'weekday'
     },
     {
-        event: createEventBase("Decompression Time (Music, Low light)", 18, 0, 19, 0, 3),
+        event: createEventBase("Decompression Time (Music, Low light)", 18, 0, 19, 0, 4),
         repeatType: 'weekday'
     },
     
@@ -93,7 +85,7 @@ const scheduleDefinitions = [
         repeatType: 'weekend'
     },
     {
-        event: createEventBase("Household Chores / Errands", 9, 30, 12, 0, -4),
+        event: createEventBase("Household Chores / Errands / Driving", 9, 30, 12, 0, -3),
         repeatType: 'weekend'
     },
     {
@@ -109,29 +101,13 @@ const scheduleDefinitions = [
     // These events will override any 'daily' or 'weekday/weekend' expanded events.
 
     // Wednesday
-    { event: createEventBase("Appointments / Errands", 9, 0, 11, 0, -3), day: WEDNESDAY },
-    { event: createEventBase("Rest & Recover", 11, 0, 12, 0, 2), day: WEDNESDAY },
-    { event: createEventBase("Deep Work", 13, 0, 17, 0, -4), day: WEDNESDAY },
-    { event: createEventBase("Evening Free Time", 17, 0, 22, 0, 3), day: WEDNESDAY },
-
-    // Thursday
-    { event: createEventBase("Social Outing / Event", 8, 0, 12, 0, -5), day: THURSDAY },
-    { event: createEventBase("Recovery / Quiet Time", 13, 0, 16, 0, 4), day: THURSDAY },
-    { event: createEventBase("Hobby / Special Interest", 16, 0, 18, 0, 3), day: THURSDAY },
-    { event: createEventBase("Evening Relaxation", 18, 0, 22, 0, 2), day: THURSDAY },
-
-    // Friday
-    { event: createEventBase("Work", 13, 0, 17, 0, -3), day: FRIDAY },
-    { event: createEventBase("Decompression", 17, 0, 19, 0, 3), day: FRIDAY },
-    { event: createEventBase("Socializing with friends (optional)", 19, 0, 22, 0, -4), day: FRIDAY },
-    
-    // Sunday
-    { event: createEventBase("Prepare for the week ahead", 13, 0, 15, 0, -2), day: SUNDAY },
-    { event: createEventBase("Quiet Hobby", 15, 0, 18, 0, 3), day: SUNDAY },
-    { event: createEventBase("Sunday Dinner (Special)", 18, 0, 19, 0, 0), day: SUNDAY },
-
-    // Saturday
-    { event: createEventBase("Free Time / Personal Projects", 13, 0, 18, 0, 3), day: SATURDAY },
+    { event: createEventBase("Gym", 7, 0, 9, 0, -2), day: MONDAY },
+    { event: createEventBase("Run/Cardio", 7, 0, 9, 0, -2), day: TUESDAY },
+    { event: createEventBase("Gym", 7, 0, 9, 0, -2), day: WEDNESDAY },
+    { event: createEventBase("Run/Cardio", 7, 0, 9, 0, -2), day: THURSDAY },
+    { event: createEventBase("Gym", 7, 0, 9, 0, -2), day: FRIDAY },
+    { event: createEventBase("Run/Cardio", 7, 0, 9, 0, -2), day: SATURDAY },
+    { event: createEventBase("Gym", 13, 0, 16, 0, -2), day: SUNDAY },
 ];
 
 // --- Schedule Generation Logic ---

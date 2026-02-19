@@ -1,6 +1,6 @@
-import React from 'react';
 import EnergyBar from './EnergyBar';
 import styles from './Header.module.css';
+import PropTypes from 'prop-types';
 
 const TodaySummary = ({ events, today }) => {
   const currentHour = today.getHours();
@@ -28,13 +28,24 @@ const TodaySummary = ({ events, today }) => {
   );
 };
 
+TodaySummary.propTypes = {
+  events: PropTypes.array.isRequired,
+  today: PropTypes.instanceOf(Date).isRequired,
+};
 
-const Header = ({ today, schedule }) => {
+
+const Header = ({ today, schedule, weeklyEnergyTotal, MAX_WEEKLY_ENERGY }) => {
   const currentDayIndex = today.getDay();
   const todaysEvents = schedule.filter(event => event.day === currentDayIndex).sort((a, b) => (a.startHour * 60 + a.startMinute) - (b.startHour * 60 + b.startMinute));
 
   return (
     <>
+      <div className={styles.weeklyTotalContainer}>
+        <span className={styles.weeklyTotalLabel}>Weekly Energy:</span>
+        <span className={`${styles.weeklyTotalValue} ${styles.starJediFont}`}>
+          {`${weeklyEnergyTotal}/${MAX_WEEKLY_ENERGY}`}
+        </span>
+      </div>
  
       <div className={styles.currentDayDisplay}>
         <div className={styles.currentDayHeader}>
@@ -49,6 +60,13 @@ const Header = ({ today, schedule }) => {
         </div>
     </>
   );
+};
+
+Header.propTypes = {
+  today: PropTypes.instanceOf(Date).isRequired,
+  schedule: PropTypes.array.isRequired,
+  weeklyEnergyTotal: PropTypes.number.isRequired,
+  MAX_WEEKLY_ENERGY: PropTypes.number.isRequired,
 };
 
 export default Header;

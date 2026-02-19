@@ -1,3 +1,33 @@
+.weeklyTotalContainer {
+    background-color: #3b3b5c; /* Darker background */
+    padding: 10px 15px;
+    margin: 0 auto 20px auto;
+    border-radius: 5px;
+    border: 1px solid #4ecdc4; /* Neon teal border */
+    box-shadow: 0 0 15px rgba(78, 205, 196, 0.6); /* Neon teal glow */
+    max-width: 95%;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px; /* Space below weekly total */
+}
+
+.weeklyTotalLabel {
+    font-family: 'StarJedi', sans-serif;
+    color: #4ecdc4;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.weeklyTotalValue {
+    font-size: 1.8em;
+    font-weight: bold;
+    letter-spacing: 0.5em;
+    color: #ffe81f; /* Bright yellow for emphasis */
+    font-family: 'AurekBesh', sans-serif;
+}
+
 .currentDayDisplay {
     background-color: #3b3b5c; /* Darker background for the display block */
     padding: 10px 15px; /* Reduced padding */

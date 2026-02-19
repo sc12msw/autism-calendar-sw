@@ -1,7 +1,7 @@
-import React from 'react';
 import styles from './MobileCalendar.module.css';
+import PropTypes from 'prop-types';
 
-const MobileCalendar = ({ dayIndex, dayEvents, today, currentDayIndex, onPrev, onNext }) => {
+const MobileCalendar = ({ dayIndex, dayEvents, today, currentDayIndex, onPrev, onNext, dailyEnergyTotals, MAX_DAILY_ENERGY }) => {
   const selectedDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + (dayIndex - currentDayIndex));
   const dayName = selectedDate.toLocaleDateString('en-US', { weekday: 'long' });
 
@@ -9,10 +9,15 @@ const MobileCalendar = ({ dayIndex, dayEvents, today, currentDayIndex, onPrev, o
   const currentMinute = today.getMinutes();
   const currentTimeInMinutes = currentHour * 60 + currentMinute;
   
+  const cumulativeEnergy = dailyEnergyTotals[dayIndex] || 0;
+
   return (
     <div className={styles.mobileCalendarView}>
       <div className={styles.mobileCurrentDayHeaderContainer}>
         <h2 className={styles.mobileCurrentDayHeader}>{dayName}</h2>
+        <div className={`${styles.dailyEnergyTotalMobile} ${styles.starJediFont}`}>
+          {`${cumulativeEnergy}/${MAX_DAILY_ENERGY}`}
+        </div>
       </div>
        
       <ul className={styles.mobileEventsList}>
@@ -47,6 +52,17 @@ const MobileCalendar = ({ dayIndex, dayEvents, today, currentDayIndex, onPrev, o
       </div>
     </div>
   );
+};
+
+MobileCalendar.propTypes = {
+  dayIndex: PropTypes.number.isRequired,
+  dayEvents: PropTypes.array.isRequired,
+  today: PropTypes.instanceOf(Date).isRequired,
+  currentDayIndex: PropTypes.number.isRequired,
+  onPrev: PropTypes.func.isRequired,
+  onNext: PropTypes.func.isRequired,
+  dailyEnergyTotals: PropTypes.object.isRequired,
+  MAX_DAILY_ENERGY: PropTypes.number.isRequired,
 };
 
 export default MobileCalendar;

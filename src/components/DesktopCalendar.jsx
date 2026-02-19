@@ -1,9 +1,9 @@
-import React from 'react';
 import styles from './DesktopCalendar.module.css';
+import PropTypes from 'prop-types';
 
-const DesktopCalendar = ({ schedule, today }) => {
-  const currentDayIndex = today.getDay();
-  let highlightColumnIndex = currentDayIndex === 0 ? 7 : currentDayIndex;
+const DesktopCalendar = ({ schedule, today, dailyEnergyTotals, MAX_DAILY_ENERGY }) => {
+  const currentDayIndex = today.getDay(); // 0 (Sunday) to 6 (Saturday)
+  const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
   const currentHour = today.getHours();
   const currentMinute = today.getMinutes();
@@ -25,26 +25,30 @@ const DesktopCalendar = ({ schedule, today }) => {
       <table className={styles.calendar}>
         <thead>
           <tr>
-            <th>Time</th>
-            <th>Monday</th>
-            <th>Tuesday</th>
-            <th>Wednesday</th>
-            <th>Thursday</th>
-            <th>Friday</th>
-            <th>Saturday</th>
-            <th>Sunday</th>
+            <th className={styles.timeHeader}>Time</th>
+            {daysOfWeek.map((dayName, index) => {
+              const cumulativeEnergy = dailyEnergyTotals[index] || 0;
+              const isCurrentDayHeader = index === currentDayIndex ? styles.currentDayColumnHeader : '';
+              return (
+                <th key={dayName} className={`${isCurrentDayHeader} ${styles.dayHeaderWithEnergy}`}>
+                  <div className={styles.dayName}>{dayName}</div>
+                  <div className={`${styles.dailyEnergyTotal} ${styles.starJediFont}`}>
+                    {`${cumulativeEnergy}/${MAX_DAILY_ENERGY}`}
+                  </div>
+                </th>
+              );
+            })}
           </tr>
         </thead>
         <tbody>
           {hours.map(hour => (
             <tr key={hour} data-hour={hour}>
               <td>{String(hour).padStart(2, '0')}:00</td>
-              {Array.from({ length: 7 }, (_, dayIndex) => {
-                const day = dayIndex + 1;
-                const events = eventsByTimeAndDay[`${hour}-${day}`] || (day === 7 ? eventsByTimeAndDay[`${hour}-0`] : undefined) || [];
+              {daysOfWeek.map((dayName, dayIndex) => { // Use dayIndex 0-6 here
+                const events = eventsByTimeAndDay[`${hour}-${dayIndex}`] || [];
                 const event = events[0]; // Just display the first event in a slot for simplicity
 
-                const isCurrentDay = day === highlightColumnIndex;
+                const isCurrentDay = dayIndex === currentDayIndex;
                 let isActiveEvent = false;
 
                 if (event && isCurrentDay) {
@@ -59,7 +63,7 @@ const DesktopCalendar = ({ schedule, today }) => {
                 if(isActiveEvent) classNames.push(styles.currentActiveEvent);
 
                 return (
-                  <td key={day} className={classNames.join(' ')} data-day={day}>
+                  <td key={dayIndex} className={classNames.join(' ')} data-day={dayIndex}>
                     {event ? event.title : ''}
                   </td>
                 );
@@ -70,6 +74,13 @@ const DesktopCalendar = ({ schedule, today }) => {
       </table>
     </div>
   );
+};
+
+DesktopCalendar.propTypes = {
+  schedule: PropTypes.array.isRequired,
+  today: PropTypes.instanceOf(Date).isRequired,
+  dailyEnergyTotals: PropTypes.object.isRequired,
+  MAX_DAILY_ENERGY: PropTypes.number.isRequired,
 };
 
 export default DesktopCalendar;

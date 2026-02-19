@@ -1,5 +1,5 @@
-import React from 'react';
 import styles from './EnergyBar.module.css';
+import PropTypes from 'prop-types';
 
 const EnergyBar = ({ dayIndex, dayEvents, today, currentDayIndex }) => {
   if (dayIndex !== currentDayIndex) {
@@ -52,6 +52,13 @@ const EnergyBar = ({ dayIndex, dayEvents, today, currentDayIndex }) => {
       <span className={styles.energyValue} style={{ color: textColor }}>{displayValue}</span>
     </div>
   );
+};
+
+EnergyBar.propTypes = {
+  dayIndex: PropTypes.number.isRequired,
+  dayEvents: PropTypes.array.isRequired,
+  today: PropTypes.instanceOf(Date).isRequired,
+  currentDayIndex: PropTypes.number.isRequired,
 };
 
 export default EnergyBar;

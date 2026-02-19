@@ -28,6 +28,30 @@
     text-transform: uppercase;
 }
 
+.timeHeader {
+    vertical-align: middle;
+}
+
+.dayHeaderWithEnergy {
+    /* Removed flex properties to avoid unwanted vertical stacking */
+    padding: 0; /* Adjust padding as needed */
+    height: 100%;
+}
+
+.dayName {
+    margin-bottom: 5px; /* Space between day name and energy total */
+}
+
+.dailyEnergyTotal {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #ff69b4; /* A contrasting color for energy, e.g., neon pink */
+}
+
+.starJediFont {
+    font-family: 'StarJedi', sans-serif; /* Apply StarJedi font */
+}
+
 .calendar td {
     background-color: #1f1f3a; /* Dark cell background */
     color: #e0e0e0; /* Off-white for cell text */

@@ -3,6 +3,7 @@ import './index.css';
 import Header from './components/Header';
 import MobileCalendar from './components/MobileCalendar';
 import DesktopCalendar from './components/DesktopCalendar';
+import { calculateEnergyTotals } from './utils/energyCalculations'; // Import the utility function
 
 function App() {
   const [schedule, setSchedule] = useState([]);
@@ -11,7 +12,13 @@ function App() {
   const [mobileDayIndex, setMobileDayIndex] = useState(new Date().getDay());
   const [currentTime, setCurrentTime] = useState(new Date());
 
-  // Fetch schedule on mount
+  const MAX_DAILY_ENERGY = 12;
+  const MAX_WEEKLY_ENERGY = MAX_DAILY_ENERGY * 7; // 12 spoons * 7 days
+
+  const [dailyEnergyTotals, setDailyEnergyTotals] = useState({}); // Stores cumulative energy at end of each day
+  const [weeklyEnergyTotal, setWeeklyEnergyTotal] = useState(MAX_WEEKLY_ENERGY); // Total cumulative energy at the end of the week
+
+  // Fetch schedule on mount and calculate cumulative energy
   useEffect(() => {
     fetch('/schedule.json')
       .then(response => response.json())
@@ -51,6 +58,13 @@ function App() {
         });
 
         setSchedule(expandedSchedule);
+
+        // Use the utility function to calculate energy totals
+        const { dailyEnergyTotals: calculatedDailyTotals, weeklyEnergyTotal: calculatedWeeklyTotal } = calculateEnergyTotals(expandedSchedule, MAX_DAILY_ENERGY);
+        
+        setDailyEnergyTotals(calculatedDailyTotals);
+        setWeeklyEnergyTotal(calculatedWeeklyTotal);
+
       })
       .catch(error => console.error('Error fetching schedule:', error));
   }, []);
@@ -90,7 +104,7 @@ function App() {
 
   return (
     <>
-      <Header today={currentTime} schedule={schedule} />
+      <Header today={currentTime} schedule={schedule} weeklyEnergyTotal={weeklyEnergyTotal} MAX_WEEKLY_ENERGY={MAX_WEEKLY_ENERGY} />
 
       {isMobile && (
         <div id="view-toggle-container">
@@ -102,7 +116,7 @@ function App() {
 
       {isMobile ? (
         showFullCalendar ? (
-          <DesktopCalendar schedule={schedule} today={currentTime} />
+          <DesktopCalendar schedule={schedule} today={currentTime} dailyEnergyTotals={dailyEnergyTotals} MAX_DAILY_ENERGY={MAX_DAILY_ENERGY} />
         ) : (
           <MobileCalendar 
             dayIndex={mobileDayIndex}
@@ -111,10 +125,12 @@ function App() {
             currentDayIndex={currentDayIndex}
             onPrev={handlePrevDay}
             onNext={handleNextDay}
+            dailyEnergyTotals={dailyEnergyTotals}
+            MAX_DAILY_ENERGY={MAX_DAILY_ENERGY}
           />
         )
       ) : (
-        <DesktopCalendar schedule={schedule} today={currentTime} />
+        <DesktopCalendar schedule={schedule} today={currentTime} dailyEnergyTotals={dailyEnergyTotals} MAX_DAILY_ENERGY={MAX_DAILY_ENERGY} />
       )}
     </>
   );

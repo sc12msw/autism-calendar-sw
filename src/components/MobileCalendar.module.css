@@ -21,6 +21,10 @@
     order: 0;
     width: 100%;
     margin-bottom: 20px;
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Arrange items vertically */
+    align-items: center; /* Center horizontally */
+    gap: 5px; /* Space between items */
 }
 
 .mobileCurrentDayHeader {
@@ -30,6 +34,17 @@
     flex-grow: 1;
     text-align: center;
     margin: 0 10px; /* Add horizontal margin */
+}
+
+.dailyEnergyTotalMobile {
+    font-size: 1.5em; /* Larger for mobile */
+    font-weight: bold;
+    color: #ff69b4; /* Neon pink */
+    margin-top: 5px;
+}
+
+.starJediFont {
+    font-family: 'StarJedi', sans-serif; /* Apply StarJedi font */
 }
 
 .navBtn {
